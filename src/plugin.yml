@@ -1,0 +1,8 @@
+name: SoulBound
+main: de.kripa.soulbound.SoulBound
+version: 1.0
+api-version: 1.19
+commands:
+  soulbind:
+    description: Soulbind any Item you want!
+    usage: /soulbind
