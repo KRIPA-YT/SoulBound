@@ -48,6 +48,9 @@ public class SoulBound extends JavaPlugin implements Listener, CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
+            if (!p.hasPermission("soulbound.soulbind")) {
+                return true;
+            }
             ItemStack hand = p.getInventory().getItemInMainHand();
             ItemMeta handMeta = hand.getItemMeta();
             handMeta.setLore(List.of("§7Soulbound"));
@@ -66,6 +69,9 @@ public class SoulBound extends JavaPlugin implements Listener, CommandExecutor {
         for (int i = 0; i < inv.getSize(); i++) {
             ItemStack item = inv.getItem(i);
             if (item == null) {
+                continue;
+            }
+            if (item.getItemMeta().getLore() == null) {
                 continue;
             }
             if (item.getItemMeta().getLore().contains("§7Soulbound")) {
